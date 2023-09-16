@@ -1,0 +1,14 @@
+<!-- navigation tag start th:네비게이션 플랫폼 작업 -->
+<nav class="nav" th:fragment="navigation">
+  <div class="move-box">
+    <a th:href="@{/}" class="move home">HOME</a>
+    <a th:href="@{/}" class="move free-board">자유게시판</a>
+  </div>
+  <!-- th:if="${sec:hasautorized()}" <div>로그아웃</div> -->
+  <div class="login-box">
+    <a sec:authorize="isAnonymous()" class="sign" th:href="@{/user/login}">로그인</a>
+    <a sec:authorize="isAnonymous()" class="sign" th:href="@{/user/signup}">회원가입</a>
+    <a sec:authorize="isAuthenticated()" class="sign" th:href="@{/user/logout}">로그아웃</a>
+  </div>
+</nav>
+<!-- navigation tag end -->

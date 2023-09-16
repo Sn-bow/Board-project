@@ -1,0 +1,153 @@
+/* navigation style */
+.nav {
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 15px;
+  font-size: 25px;
+  font-weight: 900;
+}
+.move-box {
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.move {
+  margin-right: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.move:hover {
+  color: lightslategray;
+  transition: all 0.2s ease-in-out;
+}
+
+.sign {
+  margin-right: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.sign:hover {
+  color: lightslategray;
+  transition: all 0.2s ease-in-out;
+}
+
+/* main contain style */
+.contain {
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+/* global style */
+body {
+  background-color: rgb(245, 245, 245);
+}
+
+.board_form_contain {
+  width: 900px;
+  height: 800px;
+  margin: 100px auto;
+  padding: 50px;
+  border: 2px solid rgb(200, 200, 200);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-post-content-box {
+  border-top: 1px solid #444444;
+  border-collapse: collapse;
+  width: 100%;
+}
+.detail-post-tr {
+  border-bottom: 1px solid #444444;
+}
+.detail-post-th {
+  border-right: 1px solid #444444;
+  width: 100px;
+  padding: 8px;
+}
+
+.detail-post-td {
+  font-size: 16px;
+  text-align: center;
+}
+
+.detail-regDate-td-content {
+  border-right: 1px solid #444444;
+}
+
+.detail-regDate-td {
+  width: 240px;
+}
+
+.detail-post-content {
+  width: 100%;
+  min-height: 500px;
+  border-bottom: 1px solid #444444;
+  border-top: none;
+  margin-top: 15px;
+  /* padding: 0 10px; */
+}
+
+.subject_input_style {
+  width: 98%;
+  padding: 5px;
+  font-size: 17px;
+  border: none;
+  border-radius: 5px;
+  background-color: none;
+  outline: none;
+}
+
+.content_input_style {
+  resize: none;
+  width: 100%;
+  height: 95%;
+  border: none;
+  background-color: none;
+  border-radius: 5px;
+  outline: none;
+  font-size: 17px;
+}
+
+.board_form_confirm_box {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  margin: 0 23px;
+  display: inline-block;
+  width: 65px;
+  height: 65px;
+  font-size: 15px;
+  color: #6e6e6e;
+  font-weight: 900;
+  text-decoration: none;
+  border: 2px solid #a3a1a1;
+  border-radius: 50%;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.cancle_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancle_btn:hover {
+  cursor: pointer;
+  background-color: #a3a1a1;
+  color: #e3dede;
+  transition: all 0.3s ease-in-out;
+}

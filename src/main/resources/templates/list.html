@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/list.css}" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- layout tag : <main> tag  -->
+    <main class="contain">
+      <!-- navigation tag start -->
+      <div th:replace="~{nav :: navigation}"></div>
+      <!-- navigation tag end -->
+
+      <!-- list page start -->
+      <div class="list-contain">
+        <form class="search-box" method="post">
+          <select class="var-select">
+            <option value="subject" selected>제목</option>
+            <option value="writer">작성자</option>
+          </select>
+          <input class="sch-input" type="text" name="search" id="search" />
+          <input
+            class="sch-btn"
+            type="submit"
+            name="search-confirm"
+            id="search-confirm"
+            value="찾기"
+          />
+        </form>
+
+        <table class="list-table">
+          <thead class="list-table-thead">
+            <tr class="list-tr title-tr">
+              <th class="list-th number-th">번호</th>
+              <th class="list-th title-th">제목</th>
+              <th class="list-th writer-th">작성자</th>
+              <th class="list-th regDate-th">등록일자</th>
+              <th class="list-th hit-th">조회수</th>
+            </tr>
+          </thead>
+          <tbody class="list-table-tbody">
+
+          <tr th:each="post, loop : ${list}" class="list-tr content-tr">
+              <td class="list-td number-td">[[${loop.index + 1}]]</td>
+              <td class="list-td title-td">
+                <a th:href="@{|/board/detail/${post.id}|}">[[${post.subject}]]</a>
+              </td>
+              <td class="list-td writer-td">[[${post.siteUser.username}]]</td>
+              <td class="list-td regDate-td">[[${post.regDate}]]</td>
+              <td class="list-td hit-td">[[${post.hit}]]</td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        <div class="under-box">
+          <a class="reg-form-link" th:href="@{/board/create}">글 작성하기</a>
+          <span class="all-post-count">전체 게시글 수 : 45개</span>
+        </div>
+
+        <!-- pageNation -->
+        <div class="pageNation">
+          <a class="prev-btn page-btn" href="#">이전</a>
+          <ul class="page">
+            <!-- th:each="c, loop : pageCount" -->
+            <!-- loop.index + 1 -->
+            <li class="page-number">
+              <a class="page-number-link" href="#">1</a>
+            </li>
+            <li class="page-number">
+              <a class="page-number-link" href="#">2</a>
+            </li>
+            <li class="page-number">
+              <a class="page-number-link" href="#">3</a>
+            </li>
+          </ul>
+          <a class="next-btn page-btn" href="#">다음</a>
+        </div>
+      </div>
+      <!-- list page end -->
+    </main>
+  </body>
+</html>

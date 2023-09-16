@@ -1,0 +1,133 @@
+/* navigation style */
+.nav {
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 15px;
+  font-size: 25px;
+  font-weight: 900;
+}
+.move-box {
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.move {
+  margin-right: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.move:hover {
+  color: lightslategray;
+  transition: all 0.2s ease-in-out;
+}
+
+.sign {
+  margin-right: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.sign:hover {
+  color: lightslategray;
+  transition: all 0.2s ease-in-out;
+}
+
+/* main contain style */
+.contain {
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+/* global style */
+body {
+  background-color: rgb(245, 245, 245);
+}
+
+/* signin_form style */
+.signin-form-box {
+  width: 500px;
+  height: 500px;
+  margin: 100px auto;
+  border: 2px solid rgb(200, 200, 200);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signin-input-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signin-input {
+  width: 250px;
+  height: 25px;
+  padding: 8px;
+  font-size: 18px;
+  border: 1.5px solid lightgray;
+  border-radius: 8px;
+}
+
+.signin-input:focus {
+  border: 1.5px solid #6e6e6e;
+}
+
+.id {
+  margin-bottom: 15px;
+}
+
+.signin-submit-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  /* border: 1px solid black; */
+}
+
+.btn {
+  margin: 0 23px;
+  display: inline-block;
+  width: 65px;
+  height: 65px;
+  font-size: 15px;
+  color: #6e6e6e;
+  font-weight: 900;
+  text-decoration: none;
+  border: 2px solid #a3a1a1;
+  border-radius: 50%;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.signup-link:hover {
+  cursor: pointer;
+  background-color: #a3a1a1;
+  color: #e3dede;
+  transition: all 0.3s ease-in-out;
+}
+
+.signin-submit {
+}
+
+.signup-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* err */
+.err {
+  /* display: none; */
+  position: absolute;
+  color: red;
+  font-weight: bold;
+  top: 300px;
+}

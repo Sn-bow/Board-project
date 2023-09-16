@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <th:block layout:fragment="style"></th:block>
+    <title>Document</title>
+</head>
+<body>
+<main class="contain">
+    <!-- navigation tag start -->
+    <div th:replace="~{nav :: navigation}"></div>
+    <!-- navigation tag end -->
+    <th:block layout:fragment="content"></th:block>
+</main>
+<th:block layout:fragment="script"></th:block>
+</body>
+</html>
