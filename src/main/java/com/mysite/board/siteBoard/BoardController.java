@@ -1,13 +1,14 @@
 package com.mysite.board.siteBoard;
 
 
+import com.mysite.board.siteUser.SiteUser;
+import com.mysite.board.siteUser.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
@@ -18,10 +19,11 @@ import java.util.List;
 public class BoardController {
 
     private final BoardService boardService;
+    private final UserService userService;
 
     @GetMapping("/list")
-    public String list (Model model) {
-        List<Board> boardList = this.boardService.boardList();
+    public String list (Model model, @RequestParam(value = "page", defaultValue = "0") int page) {
+        Page<Board> boardList = this.boardService.boardList(page);
         model.addAttribute("list", boardList);
         return "list";
     }
@@ -40,8 +42,16 @@ public class BoardController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/create")
-    public String create () {
+    public String create (BoardForm boardForm) {
         return "board_form";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/create")
+    public String create (BoardForm boardForm, Principal principal) {
+        SiteUser siteUser = this.userService.getUser(principal.getName());
+        this.boardService.create(boardForm, siteUser);
+        return "redirect:/board/list";
     }
 
 }

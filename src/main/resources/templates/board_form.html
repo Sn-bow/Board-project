@@ -12,7 +12,7 @@
       <div th:replace="~{nav :: navigation}"></div>
 
       <!-- board_form page start -->
-      <form class="board_form_contain">
+      <form class="board_form_contain" th:object="${boardForm}" th:action="@{/board/create}" method="post">
         <table class="detail-post-content-box">
           <tr class="detail-post-tr">
             <th class="detail-post-th">제목</th>
@@ -20,6 +20,7 @@
               <input
                 type="text"
                 class="subject_input_style"
+                th:field="*{subject}"
                 placeholder="제목을 작성해주세요"
               />
             </td>
@@ -36,6 +37,7 @@
         <div class="detail-post-content">
           <textarea
             class="content_input_style"
+            th:field="*{content}"
             placeholder="내용을 작성해주세요"
           ></textarea>
         </div>

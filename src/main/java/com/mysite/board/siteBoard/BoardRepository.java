@@ -1,5 +1,7 @@
 package com.mysite.board.siteBoard;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -16,4 +18,6 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
             "where reg_date < (select reg_date from board where id = :id) order by reg_date desc " +
             "LIMIT 1", nativeQuery = true)
     Optional<Board> findByPrevBoard(Integer id);
+
+    Page<Board> findAll(Pageable pageable);
 }

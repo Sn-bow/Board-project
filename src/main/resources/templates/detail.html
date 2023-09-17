@@ -30,8 +30,8 @@
             <th class="detail-post-th detail-regDate-th">등록일자</th>
             <td
               class="detail-post-td detail-regDate-td detail-regDate-td-content"
+              th:text="${#temporals.format(post.regDate, 'yyyy-MM-dd HH:mm:ss')}"
             >
-              [[${post.regDate}]]
             </td>
             <th class="detail-post-th detail-regDate-th">조회수</th>
             <td class="detail-post-td detail-regDate-td">[[${post.hit}]]</td>
