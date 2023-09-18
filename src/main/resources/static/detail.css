@@ -197,6 +197,7 @@ body {
   cursor: pointer;
 }
 
+/*
 .pageNation {
   width: 100%;
   margin-top: 25px;
@@ -232,4 +233,41 @@ body {
 
 .page-number-link:hover {
   background-color: lightgray;
+}
+*/
+
+.detail-confirm-box {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.confirm-btn {
+    border: 1px solid black;
+          padding: 7px;
+          border-radius: 5px;
+          font-size: 17px;
+          font-weight: 800;
+          background-color: lightgray;
+          transition: all 0.5s ease-in-out;
+          margin: 0 25px;
+}
+
+.confirm-btn:hover {
+cursor: pointer;
+    background-color: gray;
+      color: rgb(225, 225, 225);
+      transition: all 0.5s ease-in-out;
+}
+
+.detail-delete-btn {
+}
+
+.detail-modify-btn {
+}
+.list-move-btn {
 }

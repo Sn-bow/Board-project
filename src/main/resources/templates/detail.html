@@ -46,11 +46,11 @@
         <div class="detail-post-content">[[${post.content}]]</div>
 
         <div class="detail-confirm-box">
-        <form class="detail-confirm-form" th:if="${#authentication.name == post.siteUser.username}" th:action="@{|/board/delete/${post.id}|}" method="post">
-          <input type="submit" name="delete" value="삭제" />
+        <form th:if="${#authentication.name == post.siteUser.username}" th:action="@{|/board/delete/${post.id}|}" method="post">
+          <input class="detail-delete-btn confirm-btn" type="submit" name="delete" value="삭제" />
         </form>
-          <a th:if="${#authentication.name == post.siteUser.username}" th:href="@{|/board/modify/${post.id}|}">수정</a>
-          <a th:href="@{/board/list}">목록</a>
+          <a class="detail-modify-btn confirm-btn" th:if="${#authentication.name == post.siteUser.username}" th:href="@{|/board/modify/${post.id}|}">수정</a>
+          <a class="list-move-btn confirm-btn" th:href="@{/board/list}">목록</a>
         </div>
 
         <table class="next-prev-post-box">
