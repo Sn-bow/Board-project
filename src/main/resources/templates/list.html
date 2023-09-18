@@ -45,7 +45,7 @@
           <tr th:each="post, loop : ${list}" class="list-tr content-tr">
               <td class="list-td number-td">[[${list.getTotalElements - (list.number * list.size) - loop.index}]]</td>
               <td class="list-td title-td">
-                <a th:href="@{|/board/detail/${post.id}|}">[[${post.subject}]]</a>
+                <a th:href="@{|/board/detail/${post.id}|}">[[${post.subject}]] <span th:if="${#lists.size(post.commentList) > 0}" style="color: red">[[${#lists.size(post.commentList)}]]</span></a>
               </td>
               <td class="list-td writer-td">[[${post.siteUser.username}]]</td>
               <td th:text="${#temporals.format(post.regDate, 'yyyy-MM-dd')}" class="list-td regDate-td"></td>

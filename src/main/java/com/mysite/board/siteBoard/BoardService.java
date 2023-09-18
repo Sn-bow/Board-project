@@ -67,4 +67,19 @@ public class BoardService {
         this.boardRepository.save(board);
     }
 
+    public void delete (Integer id) {
+        Optional<Board> board = this.boardRepository.findById(id);
+        if(board.isPresent()) {
+            this.boardRepository.delete(board.get());
+        } else {
+            throw new DataNotFoundException("board not found");
+        }
+    }
+
+    public void modify (Board board, String subject, String content) {
+        board.setSubject(subject);
+        board.setContent(content);
+        this.boardRepository.save(board);
+    }
+
 }

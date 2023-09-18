@@ -2,9 +2,21 @@ const subject = document.querySelector(".subject_input_style");
 const content = document.querySelector(".content_input_style");
 const confirmBtn = document.querySelector(".confirm_btn");
 
+
+let url = window.location.pathname
+
+let subjectState;
+let contentState;
+
+
+if(url == "/board/create") {
+    subjectState = false;
+    contentState = false;
+} else {
+    subjectState = true;
+    contentState = true;
+}
 // signin form state
-let subjectState = false;
-let contentState = false;
 
 // function
 
@@ -40,7 +52,6 @@ const confirmDisableBtnStyle = () => {
 
 const confirmBtnActivateHandler = () => {
   if (subjectState && contentState) {
-    // 속성 disabled 추가 또는 삭제로 변경 되어야함
     confirmBtn.disabled = false;
     confirmBtnStyle();
   } else {
@@ -50,8 +61,7 @@ const confirmBtnActivateHandler = () => {
 };
 confirmBtnActivateHandler();
 
-// 정규식대로 아이디 입력이 안되었을 경우 와
-// 비밀번호 입력이 안되었을 경우 로그인 버튼 비활성화
+
 subject.addEventListener("keyup", (e) => {
   if (e.target.value != "") {
     subjectState = true;

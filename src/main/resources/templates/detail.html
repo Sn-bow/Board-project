@@ -45,22 +45,33 @@
 
         <div class="detail-post-content">[[${post.content}]]</div>
 
+        <div class="detail-confirm-box">
+        <form class="detail-confirm-form" th:if="${#authentication.name == post.siteUser.username}" th:action="@{|/board/delete/${post.id}|}" method="post">
+          <input type="submit" name="delete" value="삭제" />
+        </form>
+          <a th:if="${#authentication.name == post.siteUser.username}" th:href="@{|/board/modify/${post.id}|}">수정</a>
+          <a th:href="@{/board/list}">목록</a>
+        </div>
+
         <table class="next-prev-post-box">
-          <tr>
-            <th>이전글</th>
-            <td th:if="${prevPost.id == null}">이전 게시글이 존재하지 않습니다.</td>
-            <td th:unless="${prevPost.id == null}" ><b><a th:href="@{|/board/detail/${prevPost.id}|}">[[${prevPost.subject}]]</a></b></td>
-          </tr>
+
           <tr>
             <th>다음글</th>
             <td th:if="${nextPost.id == null}">다음 게시글이 존재하지 않습니다.</td>
             <td th:unless="${nextPost.id == null}" ><b><a th:href="@{|/board/detail/${nextPost.id}|}">[[${nextPost.subject}]]</a></b></td>
           </tr>
+
+          <tr>
+            <th>이전글</th>
+            <td th:if="${prevPost.id == null}">이전 게시글이 존재하지 않습니다.</td>
+            <td th:unless="${prevPost.id == null}" ><b><a th:href="@{|/board/detail/${prevPost.id}|}">[[${prevPost.subject}]]</a></b></td>
+          </tr>
+
         </table>
 
         <!-- comment -->
         <div class="comment-box">
-          <form class="comment-form-box">
+          <form class="comment-form-box" th:action="@{|/comment/create/${post.id}|}" method="post">
             <textarea
               class="comment-textarea"
               name="comment"
@@ -76,142 +87,20 @@
               <th class="comment-regDate comment-th">작성일</th>
             </tr>
 
-            <tr class="comment-tr-box">
-              <td class="comment-writer comment-td">feisl42</td>
+            <tr class="comment-tr-box" th:each="cmt : ${post.commentList}">
+              <td class="comment-writer comment-td">[[${cmt.siteUser.username}]]</td>
               <td class="comment-content comment-td comment-td-content">
-                <span>글 잘보고 갑니다~~</span>
-                <form>
+                <span>[[${cmt.comment}]]</span>
+                <form th:if="${#authentication.name == cmt.siteUser.username}" th:action="@{|/comment/delete/${post.id}|}" method="post">
+                  <input type="hidden" name="cmtId" th:value="${cmt.id}" />
                   <input type="submit" value="x" />
                 </form>
               </td>
-              <td class="comment-regDate comment-td">2023-03-21</td>
+              <td th:text="${#temporals.format(cmt.regDate, 'yy.MM.dd')}" class="comment-regDate comment-td"></td>
             </tr>
-            <!-- 더미 데이터 -->
-            <tr class="comment-tr-box">
-              <td class="comment-writer comment-td">feisl42</td>
-              <td class="comment-content comment-td comment-td-content">
-                <span>글 잘보고 갑니다~~</span>
-                <form>
-                  <input type="submit" value="x" />
-                </form>
-              </td>
-              <td class="comment-regDate comment-td">2023-03-21</td>
-            </tr>
-            <tr class="comment-tr-box">
-              <td class="comment-writer comment-td">feisl42</td>
-              <td class="comment-content comment-td comment-td-content">
-                <span>글 잘보고 갑니다~~</span>
-                <form>
-                  <input type="submit" value="x" />
-                </form>
-              </td>
-              <td class="comment-regDate comment-td">2023-03-21</td>
-            </tr>
-            <tr class="comment-tr-box">
-              <td class="comment-writer comment-td">feisl42</td>
-              <td class="comment-content comment-td comment-td-content">
-                <span>글 잘보고 갑니다~~</span>
-                <form>
-                  <input type="submit" value="x" />
-                </form>
-              </td>
-              <td class="comment-regDate comment-td">2023-03-21</td>
-            </tr>
-            <tr class="comment-tr-box">
-              <td class="comment-writer comment-td">feisl42</td>
-              <td class="comment-content comment-td comment-td-content">
-                <span>글 잘보고 갑니다~~</span>
-                <form>
-                  <input type="submit" value="x" />
-                </form>
-              </td>
-              <td class="comment-regDate comment-td">2023-03-21</td>
-            </tr>
-            <tr class="comment-tr-box">
-              <td class="comment-writer comment-td">feisl42</td>
-              <td class="comment-content comment-td comment-td-content">
-                <span>글 잘보고 갑니다~~</span>
-                <form>
-                  <input type="submit" value="x" />
-                </form>
-              </td>
-              <td class="comment-regDate comment-td">2023-03-21</td>
-            </tr>
-            <tr class="comment-tr-box">
-              <td class="comment-writer comment-td">feisl42</td>
-              <td class="comment-content comment-td comment-td-content">
-                <span>글 잘보고 갑니다~~</span>
-                <form>
-                  <input type="submit" value="x" />
-                </form>
-              </td>
-              <td class="comment-regDate comment-td">2023-03-21</td>
-            </tr>
-            <tr class="comment-tr-box">
-              <td class="comment-writer comment-td">feisl42</td>
-              <td class="comment-content comment-td comment-td-content">
-                <span>글 잘보고 갑니다~~</span>
-                <form>
-                  <input type="submit" value="x" />
-                </form>
-              </td>
-              <td class="comment-regDate comment-td">2023-03-21</td>
-            </tr>
-            <tr class="comment-tr-box">
-              <td class="comment-writer comment-td">feisl42</td>
-              <td class="comment-content comment-td comment-td-content">
-                <span>글 잘보고 갑니다~~</span>
-                <form>
-                  <input type="submit" value="x" />
-                </form>
-              </td>
-              <td class="comment-regDate comment-td">2023-03-21</td>
-            </tr>
-            <tr class="comment-tr-box">
-              <td class="comment-writer comment-td">feisl42</td>
-              <td class="comment-content comment-td comment-td-content">
-                <span>글 잘보고 갑니다~~</span>
-                <form>
-                  <input type="submit" value="x" />
-                </form>
-              </td>
-              <td class="comment-regDate comment-td">2023-03-21</td>
-            </tr>
-            <tr class="comment-tr-box">
-              <td class="comment-writer comment-td">feisl42</td>
-              <td class="comment-content comment-td comment-td-content">
-                <span>글 잘보고 갑니다~~</span>
-                <form>
-                  <input type="submit" value="x" />
-                </form>
-              </td>
-              <td class="comment-regDate comment-td">2023-03-21</td>
-            </tr>
-            <!-- 더미 데이터 -->
+
           </table>
         </div>
-        <!-- comment pageNation start -->
-        <div class="pageNation">
-            <a class="prev-btn page-btn" href="#">이전</a>
-            <ul class="page">
-              <!-- th:each="c, loop : pageCount" -->
-              <!-- loop.index + 1 -->
-              <li class="page-number">
-                <a class="page-number-link" href="#">1</a>
-              </li>
-              <li class="page-number">
-                <a class="page-number-link" href="#">2</a>
-              </li>
-              <li class="page-number">
-                <a class="page-number-link" href="#">3</a>
-              </li>
-            </ul>
-            <a class="next-btn page-btn" href="#">다음</a>
-          </div>
-        </div>
-        <!-- comment pageNation end -->
-      </div>
-      <!-- detail page end -->
     </main>
   </body>
 </html>
