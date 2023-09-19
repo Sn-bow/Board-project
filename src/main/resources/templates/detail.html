@@ -39,7 +39,9 @@
 
           <tr class="detail-post-tr">
             <th class="detail-post-th">첨부파일</th>
-            <td class="detail-post-td">test.txt, name.xel</td>
+            <td th:each="file : ${post.fileEntityList}" class="detail-post-td">
+              <a th:href="|/board/download/${file.id}|">[[${file.orgNm}]]</a>
+            </td>
           </tr>
         </table>
 

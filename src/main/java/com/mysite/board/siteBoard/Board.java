@@ -2,6 +2,7 @@ package com.mysite.board.siteBoard;
 
 
 import com.mysite.board.siteCmt.Comment;
+import com.mysite.board.siteFile.FileEntity;
 import com.mysite.board.siteUser.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -36,5 +37,8 @@ public class Board {
 
     @ManyToOne
     private SiteUser siteUser;
+
+    @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE)
+    private List<FileEntity> fileEntityList;
 
 }

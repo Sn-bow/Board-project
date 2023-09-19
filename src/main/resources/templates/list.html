@@ -15,12 +15,14 @@
 
       <!-- list page start -->
       <div class="list-contain">
-        <form class="search-box" method="post">
-          <select class="var-select">
-            <option value="subject" selected>제목</option>
-            <option value="writer">작성자</option>
+        <form class="search-box">
+          <select class="var-select" name="query">
+            <option value="subject" th:selected="${query} == 'subject'" >제목</option>
+            <option value="content" th:selected="${query} == 'content'">내용</option>
+            <option value="user" th:selected="${query} == 'user'">작성자</option>
+            <option value="subject+content" th:selected="${query} == 'subject+content'">제목+내용</option>
           </select>
-          <input class="sch-input" type="text" name="search" id="search" />
+          <input class="sch-input" type="text" name="kw" id="search_kw" th:value="${kw}" />
           <input
             class="sch-btn"
             type="submit"
@@ -64,7 +66,7 @@
         <div class="pageNation" th:if="${!list.isEmpty()}">
           <a th:classappend="${!list.hasPrevious} ? 'disabled'"
              class="prev-btn page-btn"
-             th:href="@{|?page=${list.number-1}|}">
+             th:href="@{|?query=${query}&kw=${kw}&page=${list.number-1}|}">
             이전
           </a>
           <ul class="page">
@@ -75,15 +77,19 @@
                     th:classappend="${page == list.number} ? 'active'"
                     th:if="${page >= list.number - 5 and page <= list.number + 5}"
             >
-              <a th:if="${page == list.number}" class="page-number-link active" th:href="@{|?page=${page}|}">[[${page + 1}]]</a>
-              <a th:if="${page != list.number}" class="page-number-link" th:href="@{|?page=${page}|}">[[${page + 1}]]</a>
+              <a th:if="${page == list.number}" class="page-number-link active" th:href="@{|?query=${query}&kw=${kw}&page=${page}|}">[[${page + 1}]]</a>
+              <a th:if="${page != list.number}" class="page-number-link" th:href="@{|?query=${query}&kw=${kw}&page=${page}|}">[[${page + 1}]]</a>
             </li>
 
           </ul>
-          <a th:classappend="${!list.hasNext} ? 'disabled'" class="next-btn page-btn" th:href="@{|?page=${list.number + 1}|}">다음</a>
+          <a th:classappend="${!list.hasNext} ? 'disabled'" class="next-btn page-btn" th:href="@{|?query=${query}&kw=${kw}&page=${list.number + 1}|}">다음</a>
         </div>
       </div>
       <!-- list page end -->
+<!--      <form th:action="@{/board/list}" method="get" id="searchForm">-->
+<!--        <input type="hidden" id="kw" name="kw" th:value="${kw}">-->
+<!--        <input type="hidden" id="page" name="page" th:value="${list.number}">-->
+<!--      </form>-->
     </main>
   </body>
 </html>
