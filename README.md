@@ -1,5 +1,7 @@
 ﻿# 게시판 프로젝트
 
+[블로그 - 게시판 프로젝트 1](https://velog.io/@wjd5464/SpringBoot-%EA%B2%8C%EC%8B%9C%ED%8C%90-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-1)
+
 ## 사용한 기술 스택
 - Spring Boot 3
 - Spring Security
